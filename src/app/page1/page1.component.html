@@ -1,0 +1,22 @@
+
+
+<form [formGroup]="form" >
+
+<div>
+  <apx-chart *ngIf="load"
+    [series]="chartOptions.series!"
+    [chart]="chartOptions.chart!"
+    [xaxis]="chartOptions.xaxis!"
+    [title]="chartOptions.title!"
+  ></apx-chart>
+</div>
+<br>
+
+<ion-item>
+  <ion-input label="Cant. lecturas" formControlName="cant_lecturas"  type="number" placeholder="ejemplo 10" >
+
+  </ion-input>
+  <ion-button (click)="cambiar_cant_lecturas()">Cargar</ion-button>
+</ion-item>
+
+</form>

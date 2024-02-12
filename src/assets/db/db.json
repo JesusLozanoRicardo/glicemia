@@ -1,0 +1,21 @@
+{
+    "database": "lectura.db",
+    "version": 1,
+    "encrypted": false,
+    "mode": "full",
+    "tables": [
+        {
+            "name": "lectura",
+            "schema": [
+                {
+                    "column": "lectura",
+                    "value": "REAL NOT NULL"
+                },
+                {
+                    "column": "fecha",
+                    "value": "REAL NOT NULL"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,76 @@
+
+
+<ion-header >
+  <ion-toolbar>
+    <ion-title class="text-center text-sky-500 text-2xl font-bold">
+      CONTROL DE GLICEMIA
+      <!--<ion-list>
+        <ion-item>
+          <ion-select formControlName="valor" #valor1 aria-label="Favorite Fruit" value="apple">
+            <ion-select-option selected value="0">De mg/dL a mmol/L</ion-select-option>
+            <ion-select-option value="1">De mmol/L a mg/dL</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>-->
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <!-- Formulario para añadir un elemento -->
+    
+<form class="mx-auto form" [formGroup]="form" >
+   <div class="flex justify-center gap-2" >
+     <div class="flex items-center justify-end ">
+          <ion-input class="ion-label-right text-sky-500/50" placeholder="0" type="number" label="Lectura: " formControlName="lectura" id="lectura" (input)="calcular()"></ion-input>
+     </div>
+     <div class="flex items-center justify-start font-medium">
+          <!--<ion-label>mg/dL</ion-label>-->
+          <ion-select formControlName="unidad"  [(ngModel)]="unidad" (ionChange)="calcular()">
+            <ion-select-option *ngFor="let form of typesOf" selected="form.checked" [value]="form.unidad">{{form.title}}</ion-select-option>
+          </ion-select>
+     </div>
+   </div>
+
+    <div class="text-center text-2xl font-black text-red-500">
+      <ion-label>Resultado: {{this.resultado}} {{this.unidad}}</ion-label>
+     </div>
+    <div>
+       <ion-button class="mx-auto p-2 size-full" [disabled]="this.unidad=='mg/dL'" id="unidad_form" (click)="create()">
+           <ion-icon name="add-outline"></ion-icon>
+       </ion-button>
+    </div>
+    <div>
+       <ion-button class="mx-auto p-2 size-full" (click)="ir()">
+           <ion-icon name="pulse"></ion-icon>
+       </ion-button>
+    </div>   
+ 
+</form>
+
+<!--  -->
+ <div class="flex items-start justify-center" style="height:100%; overflow: scroll;">
+  <ion-list >
+    <ion-item-sliding *ngFor="let language of this.languages; let i = index;">
+      <!-- elemento -->
+      <ion-item class="text-2xl ">
+        <!--<ion-label>{{language}} + {{fecha_normal[i]}}</ion-label>-->
+        <ion-label>{{language}}</ion-label>
+      </ion-item>
+      <!-- opciones -->
+      <ion-item-options>
+        <ion-item-option color="warning" (click)="update(fecha_numero[i])"> 
+          <ion-icon name="pencil-outline" slot="icon-only"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" (click)="delete(fecha_numero[i])">
+          
+          <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>     
+    </ion-item-sliding>
+  </ion-list>
+</div>
+
+</ion-content>
+
